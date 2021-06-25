@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GameLokal.Toolkit.Pattern
+namespace GameLokal.Toolkit
 {
   /// <summary>
   ///   <para>A stack based Pool.IObjectPool_1.</para>

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameLokal.Toolkit.Pattern
+namespace GameLokal.Toolkit
 {
     public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour 
     {

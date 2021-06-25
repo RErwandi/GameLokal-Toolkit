@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameLokal.Toolkit.Extensions
+namespace GameLokal.Toolkit
 {
     public static class RectExtensions
     {

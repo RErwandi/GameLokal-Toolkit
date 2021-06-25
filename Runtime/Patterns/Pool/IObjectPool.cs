@@ -1,4 +1,4 @@
-﻿namespace GameLokal.Toolkit.Pattern
+﻿namespace GameLokal.Toolkit
 {
     public interface IObjectPool<T> where T : class
     {
