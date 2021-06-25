@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GameLokal.Toolkit.Pattern
+namespace GameLokal.Toolkit
 {
 	[ExecuteAlways]
 	public static class EventManager 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameLokal.Toolkit.Pattern
+namespace GameLokal.Toolkit
 {
   /// <summary>
   ///   <para>A linked list version of Pool.IObjectPool_1.</para>

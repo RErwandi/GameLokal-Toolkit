@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameLokal.Toolkit.Pattern
+namespace GameLokal.Toolkit
 {
     public struct PooledObject<T> : IDisposable where T : class
     {

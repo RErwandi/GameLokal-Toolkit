@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-namespace GameLokal.Toolkit.Extensions
+namespace GameLokal.Toolkit
 {
     public static class GameObjectExtensions
     {

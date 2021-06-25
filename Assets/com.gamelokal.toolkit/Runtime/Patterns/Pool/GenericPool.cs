@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameLokal.Toolkit.Pattern
+namespace GameLokal.Toolkit
 {
     /// <summary>
     ///   <para>Provides a static implementation of Pool.ObjectPool_1.</para>

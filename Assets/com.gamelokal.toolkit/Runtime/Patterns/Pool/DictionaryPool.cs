@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GameLokal.Toolkit.Pattern
+namespace GameLokal.Toolkit
 {
   /// <summary>
   ///   <para>A version of Pool.CollectionPool_2 for Dictionaries.</para>

@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace GameLokal.Toolkit.Pattern
+namespace GameLokal.Toolkit
 {
     public class Factory : MonoBehaviour
     {

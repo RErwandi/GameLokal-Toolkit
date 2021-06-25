@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GameLokal.Toolkit.Pattern
+namespace GameLokal.Toolkit
 {
     /// <summary>
     ///   <para>A Collection such as List, HashSet, Dictionary etc can be pooled and reused by using a CollectionPool.</para>

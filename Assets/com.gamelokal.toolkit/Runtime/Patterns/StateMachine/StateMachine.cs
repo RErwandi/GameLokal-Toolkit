@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-namespace GameLokal.Toolkit.Pattern
+namespace GameLokal.Toolkit
 {
 	public struct StateChangeEvent<T> where T: struct, IComparable, IConvertible, IFormattable
 	{
