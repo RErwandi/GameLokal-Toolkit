@@ -10,9 +10,9 @@ namespace GameLokal.Toolkit
 
         private float timer = 0f;
 
-        public UnityEvent onTimerStart;
-        public UnityEvent onTimerFinished;
-        public UnityEvent onTimerInterrupt;
+        public UnityEvent onTimerStart = new UnityEvent();
+        public UnityEvent onTimerFinished = new UnityEvent();
+        public UnityEvent onTimerInterrupt = new UnityEvent();
 
         private void OnEnable()
         {
