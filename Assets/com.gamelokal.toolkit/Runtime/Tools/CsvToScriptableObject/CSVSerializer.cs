@@ -7,7 +7,9 @@ using System.Reflection;
 using UnityEditor;
 #endif
 
-public class CSVSerializer
+namespace GameLokal.Toolkit
+{
+    public class CSVSerializer
 {
     static public T[] Deserialize<T>(string text)
     {
@@ -217,4 +219,5 @@ public class CSVSerializer
         }
         return lines;
     }
+}
 }

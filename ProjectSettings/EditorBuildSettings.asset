@@ -4,5 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/com.gamelokal.toolkit/Runtime/Tools/Save Load/Examples/Save Load
+      Examples.unity
+    guid: c23106d57c58cd04fa86a9fe9f39d135
   m_configObjects: {}
