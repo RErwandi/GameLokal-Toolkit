@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CsvTest
   m_EditorClassIdentifier: 
   useWeb: 0
-  csvFile: JoyseedTools/CsvToScriptableObject/Examples/test_csv.csv
+  csvFile: com.gamelokal.toolkit/Runtime/Tools/CsvToScriptableObject/Examples/test_csv.csv
   csvUrl: 
   data:
   - firstName: Reynold
