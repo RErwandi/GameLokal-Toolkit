@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -14,10 +13,10 @@ namespace GameLokal.Toolkit
         }
         
         [SerializeField]
-        [AssetList(CustomFilterMethod = "HasMenuComponent", AutoPopulate = true)]
-        private Menu[] menuScreens;
+        [AssetList(AutoPopulate = true)]
+        private List<Menu> menuScreens = new List<Menu>();
 
-        public Menu[] MenuScreens
+        public List<Menu> MenuScreens
         {
             get => menuScreens;
             set => menuScreens = value;
@@ -31,7 +30,7 @@ namespace GameLokal.Toolkit
 
         private void Start()
         {
-            if (MenuScreens.Length > 0 + startScreen && autoStartScreen)
+            if (MenuScreens.Count > 0 + startScreen && autoStartScreen)
             {
                 var startMenu = CreateInstance(MenuScreens[startScreen].name);
                 OpenMenu(startMenu.GetMenu());
@@ -78,7 +77,7 @@ namespace GameLokal.Toolkit
 
         private GameObject GetPrefab(string prefabName)
         {
-            for (int i = 0; i < MenuScreens.Length; i++)
+            for (int i = 0; i < MenuScreens.Count; i++)
             {
                 if (MenuScreens[i].name == prefabName)
                 {
@@ -132,11 +131,6 @@ namespace GameLokal.Toolkit
             {
                 menuStack.Peek().OnBackPressed();
             }
-        }
-
-        private bool HasMenuComponent(GameObject obj)
-        {
-            return obj.GetComponent<Menu>() != null;
         }
     }
 
