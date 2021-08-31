@@ -1,45 +1,51 @@
 ﻿using System.Collections.Generic;
+#if UNITY_EDITOR
+using System.Diagnostics;
+#endif
 using System.Linq;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace GameLokal.Toolkit
 {
     public class SaveLoadManager : Singleton<SaveLoadManager>
     {
+        [Title("Configurations")]
+        public string defaultFilename = "gamelokal_savedata";
+        public bool saveOnApplicationPause = true;
+        public bool saveOnApplicationQuit = true;
+        public bool useAutoSave = true;
+        [ShowIf("useAutoSave"), Range(1, 100), SuffixLabel("minute(s)")]
+        public float autoSaveInterval = 5;
+        
         /// <summary>
         /// Used to remember filename that is currently player using
         /// </summary>
         private string lastSaveFilename = "";
         
         private List<IGameSave> gameSaves = new List<IGameSave>();
-        private SaveLoadConfig config;
 
         private const string FILE_EXTENSION = ".gls";
 
-        protected override void Awake()
-        {
-            base.Awake();
-            config = SaveLoadConfig.Instance;
-        }
-
         private void Start()
         {
-            if (config.useAutoSave)
+            if (useAutoSave)
             {
-                InvokeRepeating(nameof(AutoSave), config.autoSaveInterval.MinuteToSecond(), config.autoSaveInterval.MinuteToSecond());
+                InvokeRepeating(nameof(AutoSave), autoSaveInterval.MinuteToSecond(), autoSaveInterval.MinuteToSecond());
             }
         }
 
         private void OnApplicationPause(bool pauseStatus)
         {
-            if (string.IsNullOrEmpty(lastSaveFilename) || !pauseStatus || !config.saveOnApplicationPause) return;
+            if (string.IsNullOrEmpty(lastSaveFilename) || !pauseStatus || !saveOnApplicationPause) return;
 
             Save(lastSaveFilename);
         }
 
         private void OnApplicationQuit()
         {
-            if (string.IsNullOrEmpty(lastSaveFilename) || !config.saveOnApplicationQuit) return;
+            if (string.IsNullOrEmpty(lastSaveFilename) || !saveOnApplicationQuit) return;
 
             Save(lastSaveFilename);
         }
@@ -65,7 +71,7 @@ namespace GameLokal.Toolkit
         {
             if (string.IsNullOrEmpty(saveFileName))
             {
-                saveFileName = config.defaultFilename;
+                saveFileName = defaultFilename;
             }
             
             lastSaveFilename = saveFileName;
@@ -79,7 +85,7 @@ namespace GameLokal.Toolkit
         {
             if (string.IsNullOrEmpty(loadFileName))
             {
-                loadFileName = config.defaultFilename;
+                loadFileName = defaultFilename;
             }
 
             if (!SaveLoad.FileExist(loadFileName + FILE_EXTENSION))
@@ -112,6 +118,14 @@ namespace GameLokal.Toolkit
             lastSaveFilename = "";
             Debug.Log($"Last saved filename has been cleared. Auto-save is now turned off until saving or loading is occured.");
         }
+        
+#if UNITY_EDITOR
+        [Button(ButtonSizes.Large)]
+        public void OpenPersistentDataPath()
+        {
+            Process.Start(Application.persistentDataPath);
+        }
+#endif
 
         [System.Serializable]
         private class JsonWrapper
