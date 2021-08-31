@@ -7,6 +7,11 @@ namespace GameLokal.Toolkit
     [DisallowMultipleComponent]
     public class MenuManager : Singleton<MenuManager>
     {
+        protected override bool ShouldNotDestroyOnLoad()
+        {
+            return false;
+        }
+
         [SerializeField]
         private Menu[] menuScreens;
 
