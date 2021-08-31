@@ -12,12 +12,9 @@ namespace GameLokal.Toolkit
         {
             return false;
         }
-
-        [SerializeField]
-        private string menuPath = "_Productions/Database/Modifiers";
         
         [SerializeField]
-        [AssetList(Path = "$menuPath", AutoPopulate = true)]
+        [AssetList(CustomFilterMethod = "HasMenuComponent", AutoPopulate = true)]
         private Menu[] menuScreens;
 
         public Menu[] MenuScreens
@@ -135,6 +132,11 @@ namespace GameLokal.Toolkit
             {
                 menuStack.Peek().OnBackPressed();
             }
+        }
+
+        private bool HasMenuComponent(GameObject obj)
+        {
+            return obj.GetComponent<Menu>() != null;
         }
     }
 
