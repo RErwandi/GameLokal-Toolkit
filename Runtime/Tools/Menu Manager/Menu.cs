@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GameLokal.Toolkit
 {
@@ -7,8 +8,8 @@ namespace GameLokal.Toolkit
     {
         public static T Instance { get; private set; }
 
-        public static Action onOpen;
-        public static Action onClosed;
+        public static UnityEvent onOpen;
+        public static UnityEvent onClosed;
         
         protected virtual void Awake()
         {
@@ -20,7 +21,7 @@ namespace GameLokal.Toolkit
             Instance = null;
         }
 
-        public static void Open()
+        public static T Open()
         {
             if (Instance == null)
             {
@@ -34,6 +35,7 @@ namespace GameLokal.Toolkit
             }
             
             onOpen?.Invoke();
+            return Instance;
         }
 
         public static void Close()
