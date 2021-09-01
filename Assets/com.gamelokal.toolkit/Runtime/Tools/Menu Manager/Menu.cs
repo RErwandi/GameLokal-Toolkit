@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GameLokal.Toolkit
 {
     public abstract class Menu<T> : Menu where T : Menu<T>
     {
         public static T Instance { get; private set; }
+
+        public static Action onOpen;
+        public static Action onClosed;
         
         protected virtual void Awake()
         {
@@ -28,6 +32,8 @@ namespace GameLokal.Toolkit
                 Instance.gameObject.SetActive(true);
                 MenuManager.Instance.OpenMenu(Instance);
             }
+            
+            onOpen?.Invoke();
         }
 
         public static void Close()
@@ -39,6 +45,7 @@ namespace GameLokal.Toolkit
             }
 
             MenuManager.Instance.CloseMenu(Instance);
+            onClosed?.Invoke();
         }
 
         public override void OnBackPressed()
