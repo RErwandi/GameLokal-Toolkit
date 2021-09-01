@@ -8,8 +8,11 @@ namespace GameLokal.Toolkit
     {
         public static T Instance { get; private set; }
 
-        public static UnityEvent onOpen;
-        public static UnityEvent onClosed;
+        private UnityEvent onOpen;
+        private UnityEvent onClosed;
+
+        public static UnityEvent OnOpen => Instance.onOpen;
+        public static UnityEvent OnClosed => Instance.onClosed;
         
         protected virtual void Awake()
         {
@@ -34,7 +37,7 @@ namespace GameLokal.Toolkit
                 MenuManager.Instance.OpenMenu(Instance);
             }
             
-            onOpen?.Invoke();
+            OnOpen?.Invoke();
             return Instance;
         }
 
@@ -47,7 +50,7 @@ namespace GameLokal.Toolkit
             }
 
             MenuManager.Instance.CloseMenu(Instance);
-            onClosed?.Invoke();
+            OnClosed?.Invoke();
         }
 
         public override void OnBackPressed()
