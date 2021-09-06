@@ -35,7 +35,14 @@ namespace GameLokal.Toolkit
                 {
                     onTimerFinished?.Invoke();
                 }
+                
+                OnProcess();
             }
+        }
+
+        public virtual void OnProcess()
+        {
+            
         }
 
         public void StartTimer()
