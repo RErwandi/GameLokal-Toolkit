@@ -12,6 +12,8 @@ namespace GameLokal.Toolkit
     public class SaveLoadManager : Singleton<SaveLoadManager>
     {
         [Title("Configurations")]
+        public bool useEasySave;
+        [HideIf("useEasySave")]
         public string defaultFilename = "gamelokal_savedata";
         public bool saveOnApplicationPause = true;
         public bool saveOnApplicationQuit = true;
@@ -27,6 +29,15 @@ namespace GameLokal.Toolkit
         private List<IGameSave> gameSaves = new List<IGameSave>();
 
         private const string FILE_EXTENSION = ".gls";
+
+        protected override void Awake()
+        {
+            base.Awake();
+            if (useEasySave)
+            {
+                defaultFilename = ES3Settings.defaultSettings.path;
+            }
+        }
 
         private void Start()
         {
@@ -101,11 +112,23 @@ namespace GameLokal.Toolkit
                 loadFileName = defaultFilename;
             }
 
-            if (!SaveLoad.FileExist(loadFileName + FILE_EXTENSION))
+            if (!useEasySave)
             {
-                Debug.LogWarning($"No save file with name {loadFileName} is found");
-                return;
+                if (!SaveLoad.FileExist(loadFileName + FILE_EXTENSION))
+                {
+                    Debug.LogWarning($"No save file with name {loadFileName} is found");
+                    return;
+                }
             }
+            else
+            {
+                if (!ES3.FileExists(defaultFilename))
+                {
+                    Debug.LogWarning($"No save file with name {loadFileName} is found");
+                    return;
+                }
+            }
+            
             
             lastSaveFilename = loadFileName;
             
