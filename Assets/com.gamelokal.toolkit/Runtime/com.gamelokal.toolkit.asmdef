@@ -1,3 +1,16 @@
 {
-	"name": "com.gamelokal.toolkit"
+    "name": "com.gamelokal.toolkit",
+    "rootNamespace": "",
+    "references": [
+        "ES3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

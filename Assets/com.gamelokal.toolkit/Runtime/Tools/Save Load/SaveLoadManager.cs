@@ -75,9 +75,22 @@ namespace GameLokal.Toolkit
             }
             
             lastSaveFilename = saveFileName;
-            var wrappers = gameSaves.Select(gameSave => new JsonWrapper {uniqueName = gameSave.GetUniqueName(), value = JsonUtility.ToJson(gameSave.GetSaveData())}).ToList();
+            
+            // Save without Easy Save 3
+            /*var wrappers = gameSaves.Select(gameSave => new JsonWrapper
+            {
+                uniqueName = gameSave.GetUniqueName(), value = JsonUtility.ToJson(gameSave.GetSaveData())
+            }).ToList();
 
-            SaveLoad.WriteFile(JsonHelper.ToJson(wrappers, true),saveFileName + FILE_EXTENSION);
+            SaveLoad.WriteFile(JsonHelper.ToJson(wrappers, true),saveFileName + FILE_EXTENSION);*/
+            
+            //Save With Easy Save 3
+            foreach (var gameSave in gameSaves)
+            {
+                var uniqueName = gameSave.GetUniqueName();
+                ES3.Save(uniqueName, gameSave.GetSaveData());
+            }
+            
             Debug.Log($"Game saved to {Application.persistentDataPath}/{saveFileName + FILE_EXTENSION}");
         }
 
@@ -96,6 +109,8 @@ namespace GameLokal.Toolkit
             
             lastSaveFilename = loadFileName;
             
+            // Load without Easy Save 3
+            /*
             var json = SaveLoad.Read(loadFileName + FILE_EXTENSION);
             var wrappers = JsonHelper.FromJson<JsonWrapper>(json);
             foreach (var gameSave in gameSaves)
@@ -105,6 +120,15 @@ namespace GameLokal.Toolkit
                     gameSave.ResetData();
                     gameSave.OnLoad(generic);
                 }
+            }
+            */
+            
+            // Load with Easy Save 3
+            foreach (var gameSave in gameSaves)
+            {
+                var uniqueName = gameSave.GetUniqueName();
+                if(ES3.KeyExists(uniqueName))
+                    gameSave.OnLoad(ES3.Load(uniqueName));
             }
             
             Debug.Log($"Game loaded from {Application.persistentDataPath}/{loadFileName + FILE_EXTENSION}");
