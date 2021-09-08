@@ -10,6 +10,7 @@ namespace GameLokal.Toolkit
         public class SavedClass
         {
             public string myString;
+            public CsvTestClass testScriptable;
         }
 
         public SavedClass savedClass;
@@ -57,10 +58,8 @@ namespace GameLokal.Toolkit
 
         public void OnLoad(object generic)
         {
-            var loadedData = (SavedClass)generic;
-            
-            savedClass.myString = loadedData.myString;
-            inputField.text = loadedData.myString;
+            savedClass = (SavedClass)generic;
+            inputField.text = savedClass.myString;
         }
     }
 }
