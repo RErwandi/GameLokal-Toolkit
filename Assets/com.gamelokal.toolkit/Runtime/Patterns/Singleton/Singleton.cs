@@ -55,10 +55,7 @@ namespace GameLokal.Toolkit
             }
             else
             {
-                if(this != _instance)
-                {
-                    Destroy(gameObject);
-                }
+                Destroy(gameObject);
             }
         }
 
