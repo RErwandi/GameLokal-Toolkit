@@ -61,6 +61,5 @@ namespace GameLokal.Toolkit
 
         protected virtual void OnCreate() { }
         protected virtual bool ShouldNotDestroyOnLoad() { return true; }
-        protected virtual void OnDestroy() { _instance = null; }
     }
 }
