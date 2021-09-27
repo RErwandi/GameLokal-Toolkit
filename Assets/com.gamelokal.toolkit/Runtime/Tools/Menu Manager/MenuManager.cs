@@ -11,9 +11,11 @@ namespace GameLokal.Toolkit
         {
             return false;
         }
+
+        public string menuPath;
         
         [SerializeField]
-        [AssetList(AutoPopulate = true)]
+        [AssetList(AutoPopulate = true, Path = "$menuPath")]
         private List<Menu> menuScreens = new List<Menu>();
 
         public List<Menu> MenuScreens
