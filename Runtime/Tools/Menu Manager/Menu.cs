@@ -42,7 +42,6 @@ namespace GameLokal.Toolkit
         {
             if (Instance == null)
             {
-                Debug.LogErrorFormat("Trying to close menu {0} but Instance is null", typeof(T));
                 return;
             }
 
