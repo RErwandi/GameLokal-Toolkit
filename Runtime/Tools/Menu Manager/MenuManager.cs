@@ -31,7 +31,8 @@ namespace GameLokal.Toolkit
         {
             if (autoStartMenu && startMenu != null)
             {
-                OpenMenu(startMenu);
+                var startMenuInst = CreateInstance(startMenu.name);
+                OpenMenu(startMenuInst.GetMenu());
             }
         }
 
