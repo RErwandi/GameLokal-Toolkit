@@ -21,18 +21,17 @@ namespace GameLokal.Toolkit
             set => menuScreens = value;
         }
 
-        public bool autoStartScreen;
-        [SerializeField, ShowIf("autoStartScreen")]
-        private int startScreen;
+        public bool autoStartMenu;
+        [SerializeField, ShowIf("autoStartMenu")]
+        private Menu startMenu;
 
         private Stack<Menu> menuStack = new Stack<Menu>();
 
         private void Start()
         {
-            if (MenuScreens.Count > 0 + startScreen && autoStartScreen)
+            if (autoStartMenu && startMenu != null)
             {
-                var startMenu = CreateInstance(MenuScreens[startScreen].name);
-                OpenMenu(startMenu.GetMenu());
+                OpenMenu(startMenu);
             }
         }
 
