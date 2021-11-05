@@ -12,7 +12,7 @@ namespace GameLokal.Toolkit
             return false;
         }
         
-        [SerializeField]
+        [SerializeField, AssetList(Path = "_Menu", AutoPopulate = true)]
         private List<Menu> menuScreens = new List<Menu>();
 
         public List<Menu> MenuScreens
