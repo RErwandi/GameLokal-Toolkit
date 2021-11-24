@@ -44,7 +44,7 @@ namespace GameLokal.Toolkit
         // whether or not to initialize the value of the bar on start
         public bool setInitialFillValueOnStart = false;
         // the initial value of the bar
-        [ShowIf("SetInitialFillValueOnStart")]
+        [ShowIf("setInitialFillValueOnStart")]
         [Range(0f,1f)]
         public float initialFillValue;
         // the direction this bar moves to
@@ -61,19 +61,19 @@ namespace GameLokal.Toolkit
 		// whether or not the foreground bar should lerp
 		public bool lerpForegroundBar = true;
 		// the speed at which to lerp the foreground bar
-		[ShowIf("LerpForegroundBar")]
+		[ShowIf("lerpForegroundBar")]
 		public float lerpForegroundBarSpeedDecreasing = 15f;
-		[ShowIf("LerpForegroundBar")]
+		[ShowIf("lerpForegroundBar")]
 		public float lerpForegroundBarSpeedIncreasing = 15f;
-		[ShowIf("LerpForegroundBar")]
+		[ShowIf("lerpForegroundBar")]
 		public float lerpForegroundBarDurationDecreasing = 0.2f;
 		// the duration each update of the foreground bar should take (only if in fixed duration bar fill mode)
-		[ShowIf("LerpForegroundBar")]
+		[ShowIf("lerpForegroundBar")]
 		public float lerpForegroundBarDurationIncreasing = 0.2f;
 		// the curve to use when animating the foreground bar fill
-		[ShowIf("LerpForegroundBar")]
+		[ShowIf("lerpForegroundBar")]
 		public AnimationCurve lerpForegroundBarCurveDecreasing = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
-		[ShowIf("LerpForegroundBar")]
+		[ShowIf("lerpForegroundBar")]
 		public AnimationCurve lerpForegroundBarCurveIncreasing = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 		
 		[TitleGroup("Delayed Bar Decreasing")]
@@ -83,13 +83,13 @@ namespace GameLokal.Toolkit
 		// whether or not the delayed bar's animation should lerp
 		public bool lerpDecreasingDelayedBar = true;
 		// the speed at which to lerp the delayed bar
-		[ShowIf("LerpDecreasingDelayedBar")]
+		[ShowIf("lerpDecreasingDelayedBar")]
 		public float lerpDecreasingDelayedBarSpeed = 15f;
 		// the duration each update of the foreground bar should take (only if in fixed duration bar fill mode)
-		[ShowIf("LerpDecreasingDelayedBar", true)]
+		[ShowIf("lerpDecreasingDelayedBar", true)]
 		public float lerpDecreasingDelayedBarDuration = 0.2f;
 		// the curve to use when animating the delayed bar fill
-		[ShowIf("LerpDecreasingDelayedBar")]
+		[ShowIf("lerpDecreasingDelayedBar")]
 		public AnimationCurve lerpDecreasingDelayedBarCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
 		[TitleGroup("Delayed Bar Increasing")]
@@ -112,7 +112,7 @@ namespace GameLokal.Toolkit
         // whether or not the bar should flash when bumping
         public bool changeColorWhenBumping = true;
         // the color to apply to the bar when bumping
-        [ShowIf("ChangeColorWhenBumping")]
+        [ShowIf("changeColorWhenBumping")]
         public Color bumpColor = Color.white;
         // the curve to map the bump animation on
         public AnimationCurve bumpScaleAnimationCurve = new AnimationCurve(new Keyframe(1, 1), new Keyframe(0.3f, 1.05f), new Keyframe(1, 1));
