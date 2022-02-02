@@ -2,7 +2,8 @@
     "name": "com.gamelokal.toolkit",
     "rootNamespace": "",
     "references": [
-        "ES3"
+        "ES3",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
