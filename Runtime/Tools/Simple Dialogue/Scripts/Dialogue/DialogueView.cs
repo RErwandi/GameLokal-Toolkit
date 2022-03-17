@@ -26,6 +26,7 @@ namespace GameLokal.Toolkit
         {
             characterName.text = dialogue.character;
             textbox.text = dialogue.text;
+            overlay.SetActive(dialogue.useOverlay);
             
             var characterPortrait = CharacterConfig.Instance.GetCharacterExpression(dialogue.character, dialogue.expression);
             if (characterPortrait == null)

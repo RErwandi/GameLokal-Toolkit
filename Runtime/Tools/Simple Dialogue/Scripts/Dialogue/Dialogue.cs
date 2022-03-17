@@ -20,7 +20,7 @@ namespace GameLokal.Toolkit
         public DialoguePortraitAlignment alignment;
 
         [BoxGroup("Split/Settings")]
-        public float speed = 25;
+        public bool useOverlay;
 
         [BoxGroup("Text"), TextArea, HideLabel]
         public string text;
