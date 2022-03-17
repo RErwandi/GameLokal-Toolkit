@@ -20,7 +20,7 @@ namespace GameLokal.Toolkit
         public DialoguePortraitAlignment alignment;
 
         [BoxGroup("Split/Settings")]
-        public bool useOverlay;
+        public bool useOverlay = true;
 
         [BoxGroup("Text"), TextArea, HideLabel]
         public string text;
