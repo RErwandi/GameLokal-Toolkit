@@ -19,18 +19,18 @@ namespace GameLokal.Toolkit
         private DialogueData currentDialogueData;
         private Action onFinishCallback;
         
-        private void Start()
+        protected virtual void Start()
         {
             HideDialogue();
         }
 
-        private void HideDialogue()
+        protected virtual void HideDialogue()
         {
             leftDialogue.gameObject.SetActive(false);
             rightDialogue.gameObject.SetActive(false);
         }
         
-        public void PlayDialogue(DialogueData data, Action onFinish)
+        public virtual void PlayDialogue(DialogueData data, Action onFinish)
         {
             iDialogue = 0;
             currentDialogueData = data;
@@ -38,7 +38,7 @@ namespace GameLokal.Toolkit
             ShowCurrentDialogue();
         }
 
-        private void ShowDialogue(Dialogue dialogue)
+        protected virtual void ShowDialogue(Dialogue dialogue)
         {
             HideDialogue();
             if (dialogue.alignment == DialoguePortraitAlignment.Left)
@@ -53,12 +53,12 @@ namespace GameLokal.Toolkit
             }
         }
 
-        private void ShowCurrentDialogue()
+        protected virtual void ShowCurrentDialogue()
         {
             ShowDialogue(currentDialogueData.dialogues[iDialogue]);
         }
 
-        public void Next()
+        public virtual void Next()
         {
             iDialogue++;
             if (iDialogue < currentDialogueData.dialogues.Count)
@@ -71,7 +71,7 @@ namespace GameLokal.Toolkit
             }
         }
 
-        private void EndDialogue()
+        protected virtual void EndDialogue()
         {
             onFinishCallback?.Invoke();
             HideDialogue();

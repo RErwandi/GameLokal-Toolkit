@@ -12,17 +12,17 @@ namespace GameLokal.Toolkit
         public Image portrait;
         public Button nextButton;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             nextButton.onClick.AddListener(Finish);
         }
         
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             nextButton.onClick.RemoveListener(Finish);
         }
 
-        public void Show(Dialogue dialogue)
+        public virtual void Show(Dialogue dialogue)
         {
             characterName.text = dialogue.character;
             textbox.text = dialogue.text;
@@ -40,7 +40,7 @@ namespace GameLokal.Toolkit
             }
         }
 
-        private void Finish()
+        protected virtual void Finish()
         {
             DialogueManager.Instance.Next();
         }
