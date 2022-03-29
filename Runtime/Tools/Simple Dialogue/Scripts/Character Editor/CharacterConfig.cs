@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace GameLokal.Toolkit
 {
-    [GlobalConfig("_GameLokal/Configs/")]
+    [GlobalConfig("_GameLokal/Resources/")]
     public class CharacterConfig : GlobalConfig<CharacterConfig>
     {
         [HorizontalGroup("Database")]
