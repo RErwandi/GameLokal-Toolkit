@@ -90,13 +90,13 @@ namespace GameLokal.Toolkit
         {
             if (menuStack.Count == 0)
             {
-                Debug.LogErrorFormat(menu, "{0} cannot be closed because menu stack is empty", menu.GetType());
+                Debug.LogWarningFormat(menu, "{0} cannot be closed because menu stack is empty", menu.GetType());
                 return;
             }
 
             if (menuStack.Peek() != menu)
             {
-                Debug.LogErrorFormat(menu, "{0} cannot be closed because it is not on top of stack", menu.GetType());
+                Debug.LogWarningFormat(menu, "{0} cannot be closed because it is not on top of stack", menu.GetType());
                 return;
             }
 
