@@ -24,6 +24,11 @@ namespace GameLokal.Toolkit
 
         [BoxGroup("Text"), TextArea, HideLabel]
         public string text;
+        
+        [HorizontalGroup, LabelWidth(75)]
+        public bool useEvent;
+        [ShowIf("useEvent"), HorizontalGroup, HideLabel]
+        public string eventName;
 
         public List<string> availableCharacter => CharacterConfig.Instance.GetAvailableNames;
 

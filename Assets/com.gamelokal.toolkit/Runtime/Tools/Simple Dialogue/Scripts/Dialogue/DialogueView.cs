@@ -38,6 +38,11 @@ namespace GameLokal.Toolkit
                 portrait.gameObject.SetActive(true);
                 portrait.sprite = characterPortrait;
             }
+
+            if (dialogue.useEvent && !string.IsNullOrEmpty(dialogue.eventName))
+            {
+                GameEvent.Trigger(dialogue.eventName);
+            }
         }
 
         protected virtual void Finish()
