@@ -1,13 +1,14 @@
 {
   "name": "com.gamelokal.toolkit",
   "displayName": "GameLokal Toolkit",
-  "version": "1.7.6",
-  "unity": "2020.3",
+  "version": "1.7.7",
+  "unity": "2021.3",
   "description": "Game development made easier.",
   "keywords": [
         "pattern",
         "utility",
-        "unity"
+        "unity",
+        "tools"
     ],
   "homepage": "https://gamelokal.com/",
   "bugs": {
