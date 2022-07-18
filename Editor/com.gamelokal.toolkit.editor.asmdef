@@ -1,0 +1,17 @@
+{
+    "name": "com.gamelokal.toolkit.editor",
+    "rootNamespace": "",
+    "references": [
+        "com.gamelokal.toolkit",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
