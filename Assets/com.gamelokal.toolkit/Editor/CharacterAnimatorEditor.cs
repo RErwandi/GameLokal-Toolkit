@@ -8,7 +8,7 @@
 	public class CharacterAnimatorEditor : Editor 
 	{
 		private const string MSG_EMPTY_MODEL = "Drop a model from your project or load the default Character.";
-		private const string PATH_DEFAULT_MODEL = "Assets/Plugins/GameCreator/Characters/Models/Robot.prefab";
+		private const string PATH_DEFAULT_MODEL = "Character";
         private const string PATH_FPS_MODEL = "Assets/Plugins/GameCreator/Characters/Models/RobotFPS.prefab";
 
         private const string PATH_DEFAULT_RCONT = "Assets/Plugins/GameCreator/Characters/Animations/Controllers/Locomotion.controller";
@@ -222,7 +222,7 @@
 
             if (GUI.Button(buttonRectA, "Default Character", CoreGUIStyles.GetButtonLeft()))
             {
-                GameObject prefabDefault = AssetDatabase.LoadAssetAtPath<GameObject>(PATH_DEFAULT_MODEL);
+                GameObject prefabDefault = Resources.Load<GameObject>(PATH_DEFAULT_MODEL);
                 this.LoadCharacter(prefabDefault);
             }
 
