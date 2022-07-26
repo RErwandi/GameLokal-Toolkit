@@ -24,7 +24,7 @@
 			Vector3 targetDirection = this.desiredDirection;
 			Quaternion targetRotation = Quaternion.identity;
 
-            CharacterController controller = this.characterLocomotion.characterController;
+            CharacterMovement controller = this.characterLocomotion.characterController;
 
 			float targetSpeed = this.CalculateSpeed(targetDirection, controller.isGrounded);
 
@@ -49,12 +49,12 @@
 				targetDirection = this.dashVelocity;
 				targetRotation = controller.transform.rotation;
 
-                controller.Move(targetDirection * Time.deltaTime);
+                controller.Move(targetDirection);
                 controller.transform.rotation *= targetRotation;
             }
             else
             {
-                controller.Move(targetDirection * Time.deltaTime);
+                controller.Move(targetDirection);
                 controller.transform.rotation *= targetRotation;
             }
 
