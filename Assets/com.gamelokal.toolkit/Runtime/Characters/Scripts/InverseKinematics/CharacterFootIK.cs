@@ -43,7 +43,7 @@
         private Animator animator;
         private Character character;
         private CharacterAnimator characterAnimator;
-        private CharacterController controller;
+        private CharacterMovement controller;
 
         private Foot leftFoot;
         private Foot rightFoot;
@@ -67,7 +67,7 @@
             this.character = character;
             this.characterAnimator = this.character.GetCharacterAnimator();
             this.animator = this.characterAnimator.animator;
-            this.controller = gameObject.GetComponentInParent<CharacterController>();
+            this.controller = gameObject.GetComponentInParent<CharacterMovement>();
             if (this.animator == null || !this.animator.isHuman || this.controller == null) return;
 
             Transform lFoot = this.animator.GetBoneTransform(HumanBodyBones.LeftFoot);
@@ -218,7 +218,7 @@
 
         private Vector3 GetControllerBase()
         {
-            Vector3 position = this.controller.transform.TransformPoint(this.controller.center);
+            Vector3 position = this.controller.transform.TransformPoint(this.controller.worldCenter);
             position.y -= (this.controller.height * 0.5f - this.controller.radius);
 
             return position;

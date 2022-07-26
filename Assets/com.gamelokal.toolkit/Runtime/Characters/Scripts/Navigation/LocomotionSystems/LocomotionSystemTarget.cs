@@ -32,7 +32,7 @@
                 }
 
                 Vector3 defaultDirection = Vector3.up * this.characterLocomotion.verticalSpeed;
-                this.characterLocomotion.characterController.Move(defaultDirection * Time.deltaTime);
+                this.characterLocomotion.characterController.Move(defaultDirection);
 
                 Transform characterTransform = this.characterLocomotion.character.transform;
                 Vector3 forward = characterTransform.TransformDirection(Vector3.forward);
@@ -60,7 +60,7 @@
                 NavMeshAgent agent = this.characterLocomotion.navmeshAgent;
                 agent.enabled = true;
 
-                CharacterController controller = this.characterLocomotion.characterController;
+                CharacterMovement controller = this.characterLocomotion.characterController;
                 if (agent.pathPending) return CharacterLocomotion.LOCOMOTION_SYSTEM.NavigationMeshAgent;
 
                 if (!agent.hasPath || agent.pathStatus != NavMeshPathStatus.PathComplete)
@@ -112,7 +112,7 @@
                     this.characterLocomotion.navmeshAgent.enabled = false;
                 }
 
-                CharacterController controller = this.characterLocomotion.characterController;
+                CharacterMovement controller = this.characterLocomotion.characterController;
                 Vector3 targetPos = Vector3.Scale(this.targetPosition, HORIZONTAL_PLANE);
                 targetPos += Vector3.up * controller.transform.position.y;
                 Vector3 targetDirection = (targetPos - controller.transform.position).normalized;
@@ -125,7 +125,7 @@
                 targetDirection = Vector3.Scale(targetDirection, HORIZONTAL_PLANE) * speed;
                 targetDirection += Vector3.up * this.characterLocomotion.verticalSpeed;
 
-                controller.Move(targetDirection * Time.deltaTime);
+                controller.Move(targetDirection);
                 controller.transform.rotation = targetRot;
 
                 float remainingDistance = (Vector3.Distance(

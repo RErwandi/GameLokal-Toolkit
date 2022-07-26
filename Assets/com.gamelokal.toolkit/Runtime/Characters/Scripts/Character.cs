@@ -9,7 +9,7 @@
     using GameLokal.Toolkit;
     using System;
 
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterMovement))]
     [AddComponentMenu("GameLokal/Characters/Character", 100)]
     public class Character : MonoBehaviour
     {

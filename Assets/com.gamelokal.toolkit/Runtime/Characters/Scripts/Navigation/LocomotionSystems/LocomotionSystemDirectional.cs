@@ -49,12 +49,12 @@
                 targetDirection = this.dashVelocity;
                 targetRotation = this.characterLocomotion.characterController.transform.rotation;
 
-                this.characterLocomotion.characterController.Move(targetDirection * Time.deltaTime);
+                this.characterLocomotion.characterController.Move(targetDirection);
                 this.characterLocomotion.characterController.transform.rotation = targetRotation;
             }
             else
             {
-                this.characterLocomotion.characterController.Move(targetDirection * Time.deltaTime);
+                this.characterLocomotion.characterController.Move(targetDirection);
                 this.characterLocomotion.characterController.transform.rotation = targetRotation;
             }
 

@@ -61,7 +61,7 @@
                 agent.updatePosition = true;
                 agent.updateUpAxis = true;
 
-                CharacterController controller = this.characterLocomotion.characterController;
+                CharacterMovement controller = this.characterLocomotion.characterController;
 
                 NavMeshHit hit = new NavMeshHit();
                 NavMesh.SamplePosition(this.targetTransform.position, out hit, 1.0f, NavMesh.AllAreas);
@@ -85,7 +85,7 @@
                     this.characterLocomotion.navmeshAgent.enabled = false;
                 }
 
-                CharacterController controller = this.characterLocomotion.characterController;
+                CharacterMovement controller = this.characterLocomotion.characterController;
                 Vector3 targetPosition = Vector3.Scale(this.targetTransform.position, HORIZONTAL_PLANE);
                 targetPosition += Vector3.up * currPosition.y;
                 Vector3 targetDirection = (targetPosition - currPosition).normalized;
@@ -98,7 +98,7 @@
                 targetDirection = Vector3.Scale(targetDirection, HORIZONTAL_PLANE) * speed;
                 targetDirection += Vector3.up * this.characterLocomotion.verticalSpeed;
 
-                controller.Move(targetDirection * Time.deltaTime);
+                controller.Move(targetDirection);
                 controller.transform.rotation = targetRotation;
 
                 if (this.characterLocomotion.navmeshAgent != null && this.characterLocomotion.navmeshAgent.isOnNavMesh)
