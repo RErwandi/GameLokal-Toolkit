@@ -299,8 +299,7 @@
                 if (!this.hitBuffer[i].transform.IsChildOf(this.character.transform) &&
                     !this.hitBuffer[i].transform.IsChildOf(root.anchor))
                 {
-                    //float offset = this.character.characterLocomotion.characterController.skinWidth;
-                    float offset = 0.01f;
+                    float offset = this.character.characterLocomotion.characterController.skinWidth;
                     this.character.transform.position = this.hitBuffer[i].point + (Vector3.up * offset);
                     break;
                 }
