@@ -73,7 +73,7 @@
         public float pushForce = 1.0f;
 
         [HideInInspector] public Vector3 terrainNormal = Vector3.up;
-        public float verticalSpeed = 0.0f;
+        [HideInInspector] public float verticalSpeed = 0.0f;
 
         // ADVANCED PROPERTIES: -------------------------------------------------------------------
 
@@ -96,7 +96,7 @@
         [HideInInspector] public Character character;
 
         [HideInInspector] public ANIM_CONSTRAINT animatorConstraint = ANIM_CONSTRAINT.NONE;
-        [HideInInspector] public CharacterMovement characterController;
+        [HideInInspector] public CharacterController characterController;
         [HideInInspector] public NavMeshAgent navmeshAgent;
 
         public LOCOMOTION_SYSTEM currentLocomotionType { get; private set; }
@@ -112,7 +112,7 @@
             this.lastJumpTime = Time.time;
 
             this.character = character;
-            this.characterController = this.character.GetComponent<CharacterMovement>();
+            this.characterController = this.character.GetComponent<CharacterController>();
 
             this.currentLocomotionType = LOCOMOTION_SYSTEM.CharacterController;
 
@@ -238,7 +238,8 @@
         {
             if (this.characterController != null)
             {
-                this.characterController.SetHeight(height);
+                this.characterController.height = height;
+                this.characterController.center = Vector3.up * (height / 2.0f);
             }
 
             if (this.navmeshAgent != null)

@@ -113,7 +113,7 @@ namespace GameLokal.Toolkit
         private Animator animator;
         private Character character;
         private CharacterAnimator characterAnimator;
-        private CharacterMovement controller;
+        private CharacterController controller;
 
         private Hand handL;
         private Hand handR;
@@ -132,7 +132,7 @@ namespace GameLokal.Toolkit
             this.character = character;
             this.characterAnimator = this.character.GetCharacterAnimator();
             this.animator = this.characterAnimator.animator;
-            this.controller = gameObject.GetComponentInParent<CharacterMovement>();
+            this.controller = gameObject.GetComponentInParent<CharacterController>();
             if (this.animator == null || !this.animator.isHuman || this.controller == null) return;
 
             Transform handLTransform = this.animator.GetBoneTransform(HumanBodyBones.LeftHand);
