@@ -359,10 +359,10 @@
 
         private void UpdateVerticalSpeed(bool isGrounded)
         {
-            this.verticalSpeed += this.useGravity ? this.gravity * Time.deltaTime : 0f;
+            this.verticalSpeed += this.useGravity ? this.gravity * character.DeltaTime : 0f;
             if (isGrounded)
             {
-                if (Time.time - this.lastGroundTime > JUMP_COYOTE_TIME + Time.deltaTime &&
+                if (Time.time - this.lastGroundTime > JUMP_COYOTE_TIME + character.DeltaTime &&
                     this.character.onLand != null)
                 {
                     this.character.onLand.Invoke(this.verticalSpeed);

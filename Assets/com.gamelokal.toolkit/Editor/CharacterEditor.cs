@@ -220,11 +220,7 @@
 					EditorGUILayout.PropertyField(this.spUseNavmesh);
                     EditorGUILayout.PropertyField(this.spPushForce);
 
-                    EditorGUILayout.Space();
-                    EditorGUILayout.LabelField("Save/Load:", EditorStyles.boldLabel);
-                    EditorGUILayout.PropertyField(this.spSave);
-
-					EditorGUILayout.EndVertical();
+                    EditorGUILayout.EndVertical();
 				}
 			}
 		}

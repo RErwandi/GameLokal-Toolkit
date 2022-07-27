@@ -82,6 +82,8 @@
             new TargetPosition(TargetPosition.Target.Player)
         );
 
+        protected float DeltaTime => characterLocomotion.character.DeltaTime;
+
         // PUBLIC METHODS: ------------------------------------------------------------------------
 
         public void Setup(CharacterLocomotion characterLocomotion)
@@ -97,7 +99,7 @@
             this.dashDrag = drag;
 
             this.dashVelocity = direction.normalized * (
-                impulse * Mathf.Log(1f / (Time.deltaTime * this.dashDrag + 1)) / -Time.deltaTime
+                impulse * Mathf.Log(1f / (DeltaTime * this.dashDrag + 1)) / -DeltaTime
             );
         }
 
@@ -141,7 +143,7 @@
             {
                 if (Time.time >= this.dashStartTime + this.dashDuration)
                 {
-                    this.dashVelocity /= 1 + this.dashDrag * Time.deltaTime;
+                    this.dashVelocity /= 1 + this.dashDrag * DeltaTime;
                 }
 
                 if (this.dashVelocity.magnitude < this.characterLocomotion.runSpeed)
@@ -178,7 +180,7 @@
                 targetRotation = Quaternion.RotateTowards(
                     srcRotation,
                     dstRotation,
-                    Time.deltaTime * this.characterLocomotion.angularSpeed
+                    DeltaTime * this.characterLocomotion.angularSpeed
                 );
             }
             else if (faceDirection.direction == CharacterLocomotion.FACE_DIRECTION.CameraDirection &&
@@ -195,7 +197,7 @@
                 targetRotation = Quaternion.RotateTowards(
                     srcRotation,
                     dstRotation,
-                    Time.deltaTime * this.characterLocomotion.angularSpeed
+                    DeltaTime * this.characterLocomotion.angularSpeed
                 );
             }
             else if (faceDirection.direction == CharacterLocomotion.FACE_DIRECTION.Target)
@@ -212,7 +214,7 @@
                 targetRotation = Quaternion.RotateTowards(
                     srcRotation,
                     dstRotation,
-                    Time.deltaTime * this.characterLocomotion.angularSpeed
+                    DeltaTime * this.characterLocomotion.angularSpeed
                 );
             }
             else if (faceDirection.direction == CharacterLocomotion.FACE_DIRECTION.GroundPlaneCursor)
@@ -244,7 +246,7 @@
                     targetRotation = Quaternion.RotateTowards(
                         srcRotation,
                         dstRotation,
-                        Time.deltaTime * this.characterLocomotion.angularSpeed
+                        DeltaTime * this.characterLocomotion.angularSpeed
                     );
                 }
             }
@@ -276,7 +278,7 @@
                     targetRotation = Quaternion.RotateTowards(
                         srcRotation,
                         dstRotation,
-                        Time.deltaTime * this.characterLocomotion.angularSpeed
+                        DeltaTime * this.characterLocomotion.angularSpeed
                     );
                 }
             }
@@ -366,7 +368,7 @@
                 deltaForward - this.rootMoveDeltaForward
             );
 
-            movement += verticalMovement * this.rootMoveGravity * Time.deltaTime;
+            movement += verticalMovement * this.rootMoveGravity * DeltaTime;
 
             this.characterLocomotion.characterController.Move(
                 this.characterLocomotion.character.transform.TransformDirection(movement)

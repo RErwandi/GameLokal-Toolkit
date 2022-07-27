@@ -31,7 +31,7 @@
 			this.UpdateAnimationConstraints(ref targetDirection, ref targetRotation);
 			targetDirection *= targetSpeed;
 
-            this.pivotSpeed = this.rotationY * this.characterLocomotion.angularSpeed * Time.deltaTime;
+            this.pivotSpeed = this.rotationY * this.characterLocomotion.angularSpeed * DeltaTime;
             targetRotation = Quaternion.Euler(Vector3.up * this.pivotSpeed);
 
             this.UpdateSliding();
@@ -49,12 +49,12 @@
 				targetDirection = this.dashVelocity;
 				targetRotation = controller.transform.rotation;
 
-                controller.Move(targetDirection * Time.deltaTime);
+                controller.Move(targetDirection * DeltaTime);
                 controller.transform.rotation *= targetRotation;
             }
             else
             {
-                controller.Move(targetDirection * Time.deltaTime);
+                controller.Move(targetDirection * DeltaTime);
                 controller.transform.rotation *= targetRotation;
             }
 
