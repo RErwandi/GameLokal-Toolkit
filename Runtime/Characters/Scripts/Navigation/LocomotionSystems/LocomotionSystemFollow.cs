@@ -42,7 +42,7 @@
                 }
                 else
                 {
-                    Vector3 defaultDirection = Vector3.up * this.characterLocomotion.verticalSpeed * Time.deltaTime;
+                    Vector3 defaultDirection = Vector3.up * this.characterLocomotion.verticalSpeed * DeltaTime;
                     this.characterLocomotion.characterController.Move(defaultDirection);
                 }
 
@@ -98,7 +98,7 @@
                 targetDirection = Vector3.Scale(targetDirection, HORIZONTAL_PLANE) * speed;
                 targetDirection += Vector3.up * this.characterLocomotion.verticalSpeed;
 
-                controller.Move(targetDirection * Time.deltaTime);
+                controller.Move(targetDirection * DeltaTime);
                 controller.transform.rotation = targetRotation;
 
                 if (this.characterLocomotion.navmeshAgent != null && this.characterLocomotion.navmeshAgent.isOnNavMesh)
@@ -125,7 +125,7 @@
             {
                 if (agent.velocity == Vector3.zero)
                 {
-                    agent.Move(agent.transform.forward * agent.speed * Time.deltaTime);
+                    agent.Move(agent.transform.forward * agent.speed * DeltaTime);
                 }
             }
 

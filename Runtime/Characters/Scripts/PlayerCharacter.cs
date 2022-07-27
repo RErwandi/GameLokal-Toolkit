@@ -59,12 +59,6 @@
             if (!Application.isPlaying) return;
             this.CharacterAwake();
 
-            this.initSaveData = new SaveData()
-            {
-                position = transform.position,
-                rotation = transform.rotation,
-            };
-
             HookPlayer hookPlayer = gameObject.GetComponent<HookPlayer>();
             if (hookPlayer == null) gameObject.AddComponent<HookPlayer>();
         }

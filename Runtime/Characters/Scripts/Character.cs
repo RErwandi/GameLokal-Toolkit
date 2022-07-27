@@ -40,13 +40,6 @@
         }
 
         [Serializable]
-        public class SaveData
-        {
-            public Vector3 position = Vector3.zero;
-            public Quaternion rotation = Quaternion.identity;
-        }
-
-        [Serializable]
         public class OnLoadSceneData
         {
             public bool active { get; private set; }
@@ -89,8 +82,13 @@
 
         public IsControllableEvent onIsControllable = new IsControllableEvent();
 
-        public bool save;
-        protected SaveData initSaveData = new SaveData();
+        private float deltaTime;
+
+        public float DeltaTime
+        {
+            get => deltaTime == 0.0f ? Time.deltaTime : deltaTime;
+            set => deltaTime = value;
+        }
 
         // INITIALIZERS: --------------------------------------------------------------------------
 
@@ -98,12 +96,6 @@
         {
             if (!Application.isPlaying) return;
             this.CharacterAwake();
-
-            this.initSaveData = new SaveData()
-            {
-                position = transform.position,
-                rotation = transform.rotation,
-            };
         }
 
         protected void CharacterAwake()

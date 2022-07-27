@@ -32,7 +32,7 @@
                 }
 
                 Vector3 defaultDirection = Vector3.up * this.characterLocomotion.verticalSpeed;
-                this.characterLocomotion.characterController.Move(defaultDirection * Time.deltaTime);
+                this.characterLocomotion.characterController.Move(defaultDirection * DeltaTime);
 
                 Transform characterTransform = this.characterLocomotion.character.transform;
                 Vector3 forward = characterTransform.TransformDirection(Vector3.forward);
@@ -46,7 +46,7 @@
                 if (!this.usingNavmesh)
                 {
 					Vector3 defaultDirection = Vector3.up * this.characterLocomotion.verticalSpeed;
-                    this.characterLocomotion.characterController.Move(defaultDirection * Time.deltaTime);
+                    this.characterLocomotion.characterController.Move(defaultDirection * DeltaTime);
                     return CharacterLocomotion.LOCOMOTION_SYSTEM.CharacterController;
                 }
 
@@ -125,7 +125,7 @@
                 targetDirection = Vector3.Scale(targetDirection, HORIZONTAL_PLANE) * speed;
                 targetDirection += Vector3.up * this.characterLocomotion.verticalSpeed;
 
-                controller.Move(targetDirection * Time.deltaTime);
+                controller.Move(targetDirection * DeltaTime);
                 controller.transform.rotation = targetRot;
 
                 float remainingDistance = (Vector3.Distance(
@@ -204,7 +204,7 @@
             {
                 if (agent.velocity == Vector3.zero)
                 {
-                    agent.Move(agent.transform.forward * agent.speed * Time.deltaTime);
+                    agent.Move(agent.transform.forward * agent.speed * DeltaTime);
                 }
             }
 
