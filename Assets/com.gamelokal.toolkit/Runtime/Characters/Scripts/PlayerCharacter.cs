@@ -272,17 +272,6 @@
         {
             //EventSystemManager.Instance.Wakeup();
             //this.uiConstrained = EventSystemManager.Instance.IsPointerOverUI();
-
-            #if UNITY_IOS || UNITY_ANDROID
-            for (int i = 0; i < Input.touches.Length; ++i)
-            {
-                if (Input.GetTouch(i).phase != TouchPhase.Began) continue;
-
-                int fingerID = Input.GetTouch(i).fingerId;
-                bool pointerOverUI = EventSystemManager.Instance.IsPointerOverUI(fingerID);
-                if (pointerOverUI) this.uiConstrained = true;
-            }
-            #endif
         }
 
         protected void ComputeMovement(Vector3 target)
