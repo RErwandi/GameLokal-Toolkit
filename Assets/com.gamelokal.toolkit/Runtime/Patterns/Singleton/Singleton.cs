@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GameLokal.Toolkit
 {
@@ -20,7 +21,7 @@ namespace GameLokal.Toolkit
                         return _instance;
                     }
 
-                    if (_instance == null)
+                    if (_instance == null && canBeCreated)
                     {
                         var singleton = new GameObject();
                         _instance = singleton.AddComponent<T>();
@@ -29,7 +30,7 @@ namespace GameLokal.Toolkit
                         var component = _instance.GetComponent<Singleton<T>>();
                         component.OnCreate();
 
-                        Debug.Log($"[Joyseed Core]Creating singleton of {typeof(T)}");
+                        Debug.Log($"Creating singleton of {typeof(T)}");
                     }
                 }
                 
@@ -59,7 +60,14 @@ namespace GameLokal.Toolkit
             }
         }
 
+        private void OnDestroy()
+        {
+            canBeCreated = false;
+        }
+
         protected virtual void OnCreate() { }
         protected virtual bool ShouldNotDestroyOnLoad() { return true; }
+
+        private static bool canBeCreated = true;
     }
 }
