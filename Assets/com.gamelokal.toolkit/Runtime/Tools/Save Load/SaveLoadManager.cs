@@ -26,8 +26,6 @@ namespace GameLokal.Toolkit
             {
                 InvokeRepeating(nameof(Save), autoSaveInterval.MinuteToSecond(), autoSaveInterval.MinuteToSecond());
             }
-            
-            LoadCachedFile();
         }
 
         private void OnApplicationPause(bool pauseStatus)
@@ -74,6 +72,7 @@ namespace GameLokal.Toolkit
         public void LoadCachedFile()
         {
             ES3.CacheFile(ES3Settings.defaultSettings.path);
+            Debug.Log($"Game loaded from {ES3Settings.defaultSettings.path}");
         }
 
         public void Load()
@@ -84,6 +83,8 @@ namespace GameLokal.Toolkit
                 return;
             }
 
+            LoadCachedFile();
+            
             var settings = new ES3Settings(ES3.Location.Cache);
             foreach (var gameSave in gameSaves)
             {
